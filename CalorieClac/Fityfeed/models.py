@@ -19,13 +19,13 @@ class Categoria(models.Model):
         (3,'cena'),
         (4,'snacks'),
     )
-    nombre = models.IntegerField(max_length=50, choices=opciones)
+    nombre = models.IntegerField(choices=opciones)
 
     def __str__(self):
         return str(self.nombre)
 
 class ComidaItem(models.Model):
-    name = models.CharField(max_length=200)
+    nombre = models.CharField(max_length=200)
     categoria = models.ManyToManyField(Categoria)
     carbohidratos = models.DecimalField(max_digits=5,decimal_places=2,default=0)
     grasas = models.DecimalField(max_digits=5,decimal_places=2,default=0)
