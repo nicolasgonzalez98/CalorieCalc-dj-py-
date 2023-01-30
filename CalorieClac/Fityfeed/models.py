@@ -34,7 +34,7 @@ class ComidaItem(models.Model):
     cantidad = models.IntegerField(default=1,null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.nombre
 
 #---Para la pagina del usuario
 

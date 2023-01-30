@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h3>LOGIN</h3>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <input type="text" name="user" placeholder="Usuario..." >
+
+        <input type="password" name="password" placeholder="********">
+
+        <input type="submit" value="Iniciar sesión"/>
+    </form>
+    
+    ¿Todavia no tenes una cuenta? <a href='{% url "register" %}'>Registrate</a>
+</body>
+</html>

@@ -27,7 +27,6 @@ def admin_only(view_func):
     def wrapper_func(request, *args,**kwargs):
         group = None
         if request.user.groups.exists():
-            print(request.user.groups.all())
             group=request.user.groups.all()[0].name
         if group == 'user':
             return redirect('userPage')
