@@ -1,0 +1,38 @@
+<style>
+    .flex-nav{
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .hello-msg{
+      font-size: 18px;
+      color: #fff;
+      margin-right: 20px;
+    }
+  </style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark flex-nav" >
+    <div>
+        <a class="navbar-brand" href='{% url "home" %}'>NicoCalories</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        {% if request.user.is_staff %}
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                <a class="nav-link" href='{% url "food_item" %}'>Fooditem<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href='{% url "createFoodItem" %}'>Add more items</a>
+                </li>
+            </ul>
+        {% endif %}
+
+        <span class="hello-msg">Hello, {{request.user}}</span>
+        <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+        
+        
+    </div>
+</nav>

@@ -14,12 +14,12 @@ class Cliente(models.Model):
 
 class Categoria(models.Model):
     opciones = (
-        (1,'desayuno'),
-        (2,'almuerzo'),
-        (3,'cena'),
-        (4,'snacks'),
+        ('desayuno','desayuno'),
+        ('almuerzo','almuerzo'),
+        ('cena','cena'),
+        ('snacks','snacks'),
     )
-    nombre = models.IntegerField(choices=opciones)
+    nombre = models.CharField(choices=opciones, max_length=128)
 
     def __str__(self):
         return str(self.nombre)
@@ -30,7 +30,7 @@ class ComidaItem(models.Model):
     carbohidratos = models.DecimalField(max_digits=5,decimal_places=2,default=0)
     grasas = models.DecimalField(max_digits=5,decimal_places=2,default=0)
     proteina = models.DecimalField(max_digits=5,decimal_places=2,default=0)
-    calorias = models.DecimalField(max_digits=5,decimal_places=2,default=0)
+    calorias = models.DecimalField(max_digits=5,decimal_places=2,default=0, blank=True)
     cantidad = models.IntegerField(default=1,null=True, blank=True)
 
     def __str__(self):
