@@ -84,6 +84,7 @@ def registerPage(request):
             Cliente.objects.create(usuario=user, nombre=username,email=email)
             return redirect('login')
     ctx = {'form': form}
+    
     return render(request, 'register.html', ctx)
 
 ##FALTAN DATOS
@@ -105,5 +106,6 @@ def addFoodUserItem(request):
             form.save()
             return redirect('/')
     form = agregarUsuarioComidaItemForm()
+    
     ctx = {'form':form}
     return render(request, 'addFoodUserItem.html', ctx)

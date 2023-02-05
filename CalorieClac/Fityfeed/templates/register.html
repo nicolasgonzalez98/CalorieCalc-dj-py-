@@ -3,29 +3,43 @@
 <html lang="en">
 <head>
     <title>Registro</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"0>
     <style>
 
     </style>
 </head>
-<body>
+<body class="container h-100 mt-5">
     <h3>Registro</h3>
 
         <form method="POST" action="">
             {% csrf_token %}
-            Usuario:
-            {{form.username}}
+            <div class="mb-3">
+                <label for="username" class="form-label">Usuario:</label>
+                {{form.username}}
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                {{form.email}}
+            </div>
+            <div class="mb-3">
+                <label for="password1" class="form-label">Contraseña:</label>
+                {{form.password1}}
+            </div>
+            <div class="mb-3">
+                <label for="password2" class="form-label">Re-ingresar contraseña:</label>
+                {{form.password2}}
+            </div>
 
-            Email:
-            {{form.email}}
-            
 
-            Contraseña:
-            {{form.password1}}
-
-            Re-ingresar contraseña:
-            {{form.password2}}
-
-            <input type="submit" value = 'Registrarse' />
+            <input class="btn btn-primary mb-3 btn-success" type="submit" value = 'Registrarse' />
         </form>
+
+        {{form.errors}}
+
+        <div class="mt-4">
+            <div class="d-flex justify-content-center links">
+                ¿Ya tenes una cuenta? <a href="{% url 'login' %}" class="ml-2">Logueate</a>
+            </div>
+        </div>
 </body>
 </html>
