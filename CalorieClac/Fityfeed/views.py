@@ -13,10 +13,10 @@ from django.contrib.auth.models import Group
 @login_required(login_url='login')
 @admin_only
 def home(request):
-    desayuno = Categoria.objects.filter(nombre='desayuno')
-    almuerzo = Categoria.objects.filter(nombre='almuerzo')
-    cena = Categoria.objects.filter(nombre='cena')
-    snack = Categoria.objects.filter(nombre='snack')
+    desayuno = Categoria.objects.filter(nombre='desayuno')[0].comidaitem_set.all()
+    almuerzo = Categoria.objects.filter(nombre='almuerzo')[0].comidaitem_set.all()
+    cena = Categoria.objects.filter(nombre='cena')[0].comidaitem_set.all()
+    snack = Categoria.objects.filter(nombre='snacks')[0].comidaitem_set.all()
     clientes = Cliente.objects.all()
     ctx = {
         'desayuno':desayuno,
@@ -25,7 +25,7 @@ def home(request):
         'snack':snack,
         'clientes':clientes
     }
-    
+    print(snack)
     return render(request, 'main.html', ctx)
 
 @login_required(login_url='login')

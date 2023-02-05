@@ -14,7 +14,142 @@
     <br>
     <div class="container">
         {% block content %}
-            Alo, esto se ve si sos admin
+            <div class="flex-box-row">
+                <h5>Clientes:</h5>
+                <br>
+                <br>
+                <div class="card card-body">
+                    <table class="table table-dark table-striped table-hover">
+                            <tr>
+                                <th>Cliente</th>
+                                <th>Email</th>
+                            </tr>
+                            {% for cust in clientes %}
+                            <tr>
+                                <td>{{cust.nombre}} </td>
+                                <td> {{cust.email}} </td>
+                            </tr>
+                            {% endfor %}
+                    </table>
+                    
+                </div>
+                
+            </div>
+            <br><br>
+            <h4>Lista de alimentos disponibles:</h4>
+            <div class="flex-box-row">
+                <h5>Desayuno:</h5>
+                <br>
+                <br>
+                <div class="card card-body">
+                    <table class="table table-dark table-striped table-hover">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Carbohidratos</th>
+                                <th>Grasas</th>
+                                <th>Proteinas</th>
+                                <th>Calorias</th>
+                            </tr>
+                            {% for des in desayuno %}
+                            <tr>
+                                <td>{{des.nombre}}</td>
+                                <td>{{des.carbohidratos}}</td>
+                                <td>{{des.grasas}}</td>
+                                <td>{{des.proteina}}</td>
+                                <td>{{des.calorias}}</td>
+                            </tr>
+                            {% endfor %}
+                    </table>
+                    
+                </div>
+                
+            </div>
+            <br><br>
+            <div class="flex-box-row">
+                <h5>Almuerzo:</h5>
+                <br>
+                <br>
+                <div class="card card-body">
+                    <table class="table table-dark table-striped table-hover">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Carbohidratos</th>
+                                <th>Grasas</th>
+                                <th>Proteinas</th>
+                                <th>Calorias</th>
+                            </tr>
+                            {% for des in almuerzo %}
+                            <tr>
+                                <td>{{des.nombre}}</td>
+                                <td>{{des.carbohidratos}}</td>
+                                <td>{{des.grasas}}</td>
+                                <td>{{des.proteina}}</td>
+                                <td>{{des.calorias}}</td>
+                            </tr>
+                            {% endfor %}
+                    </table>
+                    
+                </div>
+                
+            </div>
+            <br><br>
+            <div class="flex-box-row">
+                <h5>Cena:</h5>
+                <br>
+                <br>
+                <div class="card card-body">
+                    <table class="table table-dark table-striped table-hover">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Carbohidratos</th>
+                                <th>Grasas</th>
+                                <th>Proteinas</th>
+                                <th>Calorias</th>
+                            </tr>
+                            {% for des in cena %}
+                            <tr>
+                                <td>{{des.nombre}}</td>
+                                <td>{{des.carbohidratos}}</td>
+                                <td>{{des.grasas}}</td>
+                                <td>{{des.proteina}}</td>
+                                <td>{{des.calorias}}</td>
+                            </tr>
+                            {% endfor %}
+                    </table>
+                    
+                </div>
+                
+            </div>
+            <br><br>
+
+            <div class="flex-box-row">
+                <h5>Snacks:</h5>
+                <br>
+                <br>
+                <div class="card card-body">
+                    <table class="table table-dark table-striped table-hover">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Carbohidratos</th>
+                                <th>Grasas</th>
+                                <th>Proteinas</th>
+                                <th>Calorias</th>
+                            </tr>
+                            {% for des in snack %}
+                            <tr>
+                                <td>{{des.nombre}}</td>
+                                <td>{{des.carbohidratos}}</td>
+                                <td>{{des.grasas}}</td>
+                                <td>{{des.proteina}}</td>
+                                <td>{{des.calorias}}</td>
+                            </tr>
+                            {% endfor %}
+                    </table>
+                    
+                </div>
+                <br><br>
+                
+            </div>
         {% endblock %}
     </div>
 </body>
