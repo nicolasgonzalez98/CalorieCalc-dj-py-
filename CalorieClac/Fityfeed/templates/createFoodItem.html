@@ -2,10 +2,40 @@
 {% load static%}
 {% block content %}
 
+
+<h3>Crear alimento</h3>
 <form method="POST">
     {% csrf_token %}
-    {{form.as_p}}
+    <div class="mb-3">
+        <label for="name" class="form-label">Nombre</label>
+        {{form.nombre}}
+    </div>
+    <div class="mb-3">
+        <label for="category" class="form-label">Categoria</label>
+        {{form.categoria}}
+    </div>
+    <div class="mb-3">
+        <label for="carbohidratos" class="form-label">Carbohidratos</label>
+        {{form.carbohidratos}}
+    </div>
+    <div class="mb-3">
+        <label for="grasas" class="form-label">Grasas</label>
+        {{form.grasas}}
+    </div>
+    <div class="mb-3">
+        <label for="proteina" class="form-label">Proteinas</label>
+        {{form.proteina}}
+    </div>
+    <div class="mb-3">
+        <label for="calorias" class="form-label">Calorias</label>
+        {{form.calorias}}
+    </div>
+    <div class="mb-3">
+        <label for="cantidad" class="form-label">Cantidad</label>
+        {{form.cantidad}}
+    </div>
     <input type="submit" value="Crear comida">
 </form>
+<br><br>
 
 {% endblock %}

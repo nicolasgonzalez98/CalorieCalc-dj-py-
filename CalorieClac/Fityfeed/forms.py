@@ -3,6 +3,36 @@ from .models import *
 from django.contrib.auth.forms import UserCreationForm
 
 class ComidaItemForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(ComidaItemForm, self).__init__(*args, **kwargs)
+        self.fields['nombre'].widget.attrs = {
+            'id':'name',
+            'class':'form-control',
+        }
+        self.fields['categoria'].widget.attrs = {
+            'id':'category',
+            'class':'form-control'
+        }
+        self.fields['carbohidratos'].widget.attrs = {
+            'id':'carbohidratos',
+            'class':'form-control',
+        }
+        self.fields['grasas'].widget.attrs = {
+            'id':'grasas',
+            'class':'form-control',
+        }
+        self.fields['proteina'].widget.attrs = {
+            'id':'proteina',
+            'class':'form-control',
+        }
+        self.fields['calorias'].widget.attrs = {
+            'id':'calorias',
+            'class':'form-control',
+        }
+        self.fields['cantidad'].widget.attrs = {
+            'id':'cantidad',
+            'class':'form-control',
+        }
     class Meta:
         model = ComidaItem
         fields="__all__"
