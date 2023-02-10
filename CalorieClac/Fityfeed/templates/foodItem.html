@@ -2,6 +2,106 @@
 {% load static%}
 {% block content %}
 
-<h3>FoodItem</h3>
+<div class="flex-box-row">
+    <br>
+    <h5>Desayuno</h5>
+    <h7>Cantidad de opciones : {{bcnt}}</h7>
+    <a class="btn btn-success ml-3 btn-sm" href = '{% url "createFoodItem" %}'>Agregar mas alimentos</a>
+    <table class="table mt-3 table-sm">
+        <tr>
+            <th>Nombre</th>
+            <th>Carbohidratos</th>
+            <th>Grasas</th>
+            <th>Proteina</th>
+            <th>Calorias</th>
+        </tr>
+        {% for i in desayuno %}
+        <tr>
+            <td>{{i.nombre}}</td>
+            <td>{{i.carbohidratos}}</td>
+            <td>{{i.grasas}}</td>
+            <td>{{i.proteina}}</td>
+            <td>{{i.calorias}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<br>
+
+<div class="flex-box-row">
+    <br>
+    <h5>Almuerzo</h5>
+    <h7>Cantidad de opciones: {{acnt}}</h7>
+    <a class="btn btn-success ml-3 btn-sm" href = '{% url "createFoodItem" %}'>Agregar mas alimentos</a>
+    <table class="table mt-3 table-sm btn-sm">
+        <tr>
+            <th>Nombre</th>
+            <th>Carbohidratos</th>
+            <th>Grasas</th>
+            <th>Proteina</th>
+            <th>Calorias</th>
+        </tr>
+        {% for i in almuerzo %}
+        <tr>
+            <td>{{i.nombre}}</td>
+            <td>{{i.carbohidratos}}</td>
+            <td>{{i.grasas}}</td>
+            <td>{{i.proteina}}</td>
+            <td>{{i.calorias}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<br>
+<div class="flex-box-row">
+    <br>
+    <h5>Cenas</h5>
+    <h7>Cantidad de opciones: {{ccnt}}</h7>
+    <a class="btn btn-success ml-3 btn-sm" href = '{% url "createFoodItem" %}'>Agregar mas alimentos</a>
+    <table class="table mt-3 table-sm">
+        <tr>
+            <th>Nombre</th>
+            <th>Carbohidratos</th>
+            <th>Grasas</th>
+            <th>Proteina</th>
+            <th>Calorias</th>
+        </tr>
+        {% for i in cena %}
+        <tr>
+            <td>{{i.nombre}}</td>
+            <td>{{i.carbohidratos}}</td>
+            <td>{{i.grasas}}</td>
+            <td>{{i.proteina}}</td>
+            <td>{{i.calorias}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<br>
+<div class="flex-box-row">
+    <br>
+    <h5>Snack</h5>
+    <h7>Cantidad de opciones: {{scnt}}</h7>
+    <a class="btn btn-success ml-3 btn-sm" href = '{% url "createFoodItem" %}'>Agregar mas alimentos</a>
+    <table class="table mt-3 table-sm">
+        <tr>
+            <th>Nombre</th>
+            <th>Carbohidratos</th>
+            <th>Grasas</th>
+            <th>Proteina</th>
+            <th>Calorias</th>
+        </tr>
+        {% for i in snack %}
+        <tr>
+            <td>{{i.nombre}}</td>
+            <td>{{i.carbohidratos}}</td>
+            <td>{{i.grasas}}</td>
+            <td>{{i.proteina}}</td>
+            <td>{{i.calorias}}</td>
+        </tr>
+        {% endfor %}
+    </table>i
+</div>
+<br>
 
 {% endblock %}

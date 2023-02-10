@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "Fityfeed.apps.FityfeedConfig"
+    "Fityfeed.apps.FityfeedConfig",
+    'django_filters'
 ]
 
 MIDDLEWARE = [

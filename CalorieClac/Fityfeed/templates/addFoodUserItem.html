@@ -4,7 +4,15 @@
 
 <form method="POST">
     {% csrf_token %}
-    {{form.as_p}}
+    <div class="mb-3">
+        <label for="cliente" class="form-label">Clientes:</label>
+        {{form.cliente}}
+    </div>
+    <div class="mb-3">
+        <label for="comida_item" class="form-label">Alimentos:</label>
+        {{form.comida_item}}
+    </div>
+    
     <input type="submit" value="Crear comida">
 </form>
 

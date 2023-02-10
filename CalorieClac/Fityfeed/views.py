@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from .decorators import *
 from django.contrib.auth.models import Group
+from .filters import foodItemFilter
 
 # Create your views here.
 
@@ -31,19 +32,26 @@ def home(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
 def food_item(request):
-    desayuno = Categoria.objects.filter(nombre='desayuno')
-    almuerzo = Categoria.objects.filter(nombre='almuerzo')
-    cena = Categoria.objects.filter(nombre='cena')
-    snack = Categoria.objects.filter(nombre='snack')
-    clientes = Cliente.objects.all()
+    desayuno = Categoria.objects.filter(nombre='desayuno')[0].comidaitem_set.all()
+    almuerzo = Categoria.objects.filter(nombre='almuerzo')[0].comidaitem_set.all()
+    cena = Categoria.objects.filter(nombre='cena')[0].comidaitem_set.all()
+    snack = Categoria.objects.filter(nombre='snacks')[0].comidaitem_set.all()
+    bcnt = desayuno.count()
+    acnt = almuerzo.count()
+    ccnt = cena.count()
+    scnt = snack.count()
     ctx = {
         'desayuno':desayuno,
         'almuerzo': almuerzo,
         'cena':cena,
         'snack':snack,
-        'clientes':clientes
+        'bcnt':bcnt,
+        'acnt': acnt,
+        'ccnt':ccnt,
+        'scnt':scnt
     }
-    return render(request, 'foodItem.html')
+    print(cena)
+    return render(request, 'foodItem.html', ctx)
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
@@ -90,6 +98,17 @@ def registerPage(request):
 ##FALTAN DATOS
 
 def userPage(request):
+    user = request.user
+    cust=user.cliente
+    alimentos = ComidaItem.objects.filter()
+    my_filter = foodItemFilter(request.GET, queryset=alimentos)
+    total = UsuarioComidaitem.objects.all()
+    mis_alimentos = total.filter(cliente = cust)
+    cnt = mis_alimentos.count()
+    querySetFood = []
+    for c in mis_alimentos:
+        querySetFood.append(c.comida_item.all())
+    
     return render(request, 'user.html')
 
 @login_required(login_url='login')
@@ -99,7 +118,7 @@ def logoutUser(request):
 
 def addFoodUserItem(request):
     user = request.user
-    cust = user.cliente
+    # cust = user.cliente
     if request.method == 'POST':
         form = agregarUsuarioComidaItemForm(request.POST)
         if form.is_valid():

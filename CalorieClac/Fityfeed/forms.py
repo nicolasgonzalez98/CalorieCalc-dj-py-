@@ -38,6 +38,16 @@ class ComidaItemForm(ModelForm):
         fields="__all__"
 
 class agregarUsuarioComidaItemForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(agregarUsuarioComidaItemForm, self).__init__(*args, **kwargs)
+        self.fields['cliente'].widget.attrs = {
+            'class':'form-control',
+            'id':'cliente'
+        }
+        self.fields['comida_item'].widget.attrs = {
+            'class':'form-control',
+            'id':'comida_item'
+        }
     class Meta:
         model = UsuarioComidaitem
         fields = "__all__"
