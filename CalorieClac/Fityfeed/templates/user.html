@@ -1,8 +1,76 @@
 {% extends 'main.html' %}
 {% block content %}
+<head> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></head>
+<h3>Cantidad de alimentos consumidos el dia de hoy: {{cnt}}</h3>
 
-<h1>Usuario Funciona</h1>
+<div>
+    <div class="flex-box-row">
+		<h3>Limite de calorias: 2000</h3>
+		<h3>Calorias consumidas: {{calorias_totales}}</h3>
+		<h3>Restante: {{ calorias_faltantes }}</h3>
+	</div>  
+    
+    <div class="card card-body">
+        <table>
+            <tr>
+                <th>Alimento</th>
+                <th>Calorias</th>
+                <th>Carbohidratos</th>
+                <th>Grasas</th>
+                <th>Proteinas</th>
+            </tr>
+            {% for i in alimentos_finales %}
+            <tr>
+                <td>{{i.nombre}}</td>
+                <td>{{i.calorias}}</td>
+                <td>{{i.carbohidratos}}</td>
+                <td>{{i.grasas}}</td>
+                <td>{{i.proteina}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 
+    <form action='{% url "addFoodItem" %}' method="POST" class="mt-3">
+		{%csrf_token%}
+		<button type="submit" class="btn btn-success">
+			<span class="glyphicon glyphicon-plus"></span>
+		</button>
+	</form>
+</div>
 
+<br>
+
+<div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <form>
+                {{my_filter.form}}
+                <button class="btn btn-primary" type="submit">Buscar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="card card-body">
+    <table>
+        <tr>
+            <th>Alimento</th>
+            <th>Calorias</th>
+            <th>Carbohidratos</th>
+            <th>Grasas</th>
+            <th>Proteinas</th>
+        </tr>
+        {% for i in alimentos %}
+        <tr>
+            <td>{{i.nombre}}</td>
+            <td>{{i.calorias}}</td>
+            <td>{{i.carbohidratos}}</td>
+            <td>{{i.grasas}}</td>
+            <td>{{i.proteina}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 
 {% endblock %}

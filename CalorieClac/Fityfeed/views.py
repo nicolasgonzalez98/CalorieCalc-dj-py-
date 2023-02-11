@@ -102,14 +102,31 @@ def userPage(request):
     cust=user.cliente
     alimentos = ComidaItem.objects.filter()
     my_filter = foodItemFilter(request.GET, queryset=alimentos)
+    alimentos = my_filter.qs
     total = UsuarioComidaitem.objects.all()
     mis_alimentos = total.filter(cliente = cust)
     cnt = mis_alimentos.count()
     querySetFood = []
+    
     for c in mis_alimentos:
         querySetFood.append(c.comida_item.all())
-    
-    return render(request, 'user.html')
+    alimentos_finales = []
+    for i in querySetFood:
+        for alim in i:
+            alimentos_finales.append(alim)
+    calorias_totales = 0
+    for alim in alimentos_finales:
+        calorias_totales += alim.calorias
+    calorias_faltantes = 2000 - calorias_totales
+    ctx = {
+        'calorias_faltantes': calorias_faltantes,
+        'calorias_totales': calorias_totales,
+        'cnt':cnt,
+        'my_filter':my_filter,
+        'alimentos_finales':alimentos_finales,
+        'alimentos':alimentos
+    }
+    return render(request, 'user.html', ctx)
 
 @login_required(login_url='login')
 def logoutUser(request):
