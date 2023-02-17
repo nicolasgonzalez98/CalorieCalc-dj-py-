@@ -106,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-ar'
 
 TIME_ZONE = 'UTC'
 
@@ -134,3 +134,12 @@ EMAIL_HOST_PASSWORD='***'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+def FILTERS_VERBOSE_LOOKUPS():
+        from django_filters.conf import DEFAULTS
+
+        verbose_lookups = DEFAULTS['VERBOSE_LOOKUPS'].copy()
+        verbose_lookups.update({
+            'contains': '',
+        })
+        return verbose_lookups

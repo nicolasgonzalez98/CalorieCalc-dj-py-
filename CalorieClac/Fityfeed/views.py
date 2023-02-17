@@ -102,6 +102,7 @@ def userPage(request):
     cust=user.cliente
     alimentos = ComidaItem.objects.filter()
     my_filter = foodItemFilter(request.GET, queryset=alimentos)
+    print(my_filter)
     alimentos = my_filter.qs
     total = UsuarioComidaitem.objects.all()
     mis_alimentos = total.filter(cliente = cust)
