@@ -7,6 +7,5 @@ class foodItemFilter(django_filters.FilterSet):
         model = ComidaItem
         fields = {
             'nombre':['contains'],
-            
         }
         
